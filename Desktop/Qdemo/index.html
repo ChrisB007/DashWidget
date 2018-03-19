@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum Demo</title>
+    <!-- PACE-->
+    <link rel="stylesheet" type="text/css" href="plugins/PACE/themes/blue/pace-theme-flash.css">
+    <script type="text/javascript" src="plugins/PACE/pace.min.js"></script>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Fonts-->
+    <link rel="stylesheet" type="text/css" href="plugins/themify-icons/themify-icons.css">
+    <!-- Primary Style-->
+    <link rel="stylesheet" type="text/css" href="build/css/second-layout.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="favicon.png"/>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  <div id="full_length">
+    <video autoplay muted loop id="viddy">
+      <source src="https://media.istockphoto.com/videos/internet-data-ports-blue-video-id519287284">
+    </video>
+  </div> <!--End of full length video-->
+
+  <section class="user"> <!--Login form element-->
+    <div class="user_options-container">
+      <div class="user_options-text">
+        <div class="user_options-unregistered">
+          <img src="assets/images/logo/logo-light.png">
+          <h2 class="user_unregistered-title">Don't have an account?</h2>
+          <p class="user_unregistered-text">Please click the button below to setup an account. </p>
+          <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+        </div>
+
+        <div class="user_options-registered">
+          <img src="assets/images/logo/logo-light.png">
+          <h2 class="user_registered-title">Have an account?</h2>
+          <p class="user_registered-text">Click the button below to gain access</p>
+          <button class="user_registered-login" id="login-button">Login</button>
+        </div>
+      </div>
+
+      <div class="user_options-forms bounceLeft" id="user_options-forms">
+        <div class="user_forms-login">
+          <h2 class="forms_title"><img src="assets/images/icons/loginicon.png"/>&nbspLogin</h2>
+          <form class="forms_form" id="login-form">
+            <div id="id_error" class="hidden alert alert-danger"></div>
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="email" id="id_email" placeholder="Email" class="forms_field-input" required autofocus />
+              </div>
+              <div class="forms_field">
+                <input type="password" id="id_password" placeholder="Password" class="forms_field-input" required />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+              <input type="submit" value="Log In" class="forms_buttons-action">
+            </div>
+          </form>
+        </div>
+        <div class="user_forms-signup">
+          <h2 class="forms_title"><img src="assets/images/icons/signupicon.png"/>&nbspSign Up</h2>
+          <form class="forms_form">
+            <fieldset class="forms_fieldset">
+              <div class="forms_field">
+                <input type="text" placeholder="Full Name" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="email" placeholder="Email" class="forms_field-input" required />
+              </div>
+              <div class="forms_field">
+                <input type="password" placeholder="Password" class="forms_field-input" required />
+              </div>
+            </fieldset>
+            <div class="forms_buttons">
+              <input type="submit" value="Sign up" class="forms_buttons-action">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- jQuery-->
+    <script type="text/javascript" src="plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript-->
+    <script type="text/javascript" src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS-->
+    <script type="text/javascript" src="build/js/second-layout/extra-demo.js"></script>
+    <script type="text/javascript" src="build/js/second-layout/video.js"></script>
+  <script type="text/javascript" src="build/js/second-layout/loginform.js"></script>
+  <script>
+    $(function () {
+        $("#login-form").submit(function (e){
+            e.preventDefault()
+            var email = $("#id_email").val();
+            var password = $("#id_password").val();
+
+            if (email === 'testing@quantum.com' && password === 'dashboard123') {
+                sessionStorage.setItem('logged-in', 1);
+                document.location.href = '/Qdemo/second-layout';
+            } else {
+                $("#id_error").removeClass('hidden').text('Invalid user or password, please try again');
+            }
+        })
+    })
+  </script>
+
+  </body>
+</html>

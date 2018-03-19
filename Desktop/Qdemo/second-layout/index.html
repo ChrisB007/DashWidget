@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script>
+      if (!sessionStorage.getItem('logged-in')) {
+          document.location.href = '../index.html';
+      }
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quantum</title>
+    <!-- PACE-->
+    <link rel="stylesheet" type="text/css" href="../plugins/PACE/themes/blue/pace-theme-flash.css">
+    <script type="text/javascript" src="../plugins/PACE/pace.min.js"></script>
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="../plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Fonts-->
+    <link rel="stylesheet" type="text/css" href="../plugins/themify-icons/themify-icons.css">
+    <!-- Malihu Scrollbar-->
+    <link rel="stylesheet" type="text/css" href="../plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css">
+    <!-- Animo.js-->
+    <link rel="stylesheet" type="text/css" href="../plugins/animo.js/animate-animo.min.css">
+    <!-- Flag Icons-->
+    <link rel="stylesheet" type="text/css" href="../plugins/flag-icon-css/css/flag-icon.min.css">
+    <!-- Bootstrap Progressbar-->
+    <link rel="stylesheet" type="text/css" href="../plugins/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
+    <!-- Toastr-->
+    <link rel="stylesheet" type="text/css" href="../plugins/toastr/toastr.min.css">
+    <!-- SpinKit-->
+    <link rel="stylesheet" type="text/css" href="../plugins/SpinKit/css/spinners/7-three-bounce.css">
+    <!-- Jvector Map-->
+    <link rel="stylesheet" type="text/css" href="../plugins/jvectormap/jquery-jvectormap-2.0.3.css">
+    <!-- Morris Chart-->
+    <link rel="stylesheet" type="text/css" href="../plugins/morris.js/morris.css">
+
+    <!-- DataTables-->
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables.net-bs/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables.net-colreorder-bs/css/colReorder.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/datatables.net-responsive-bs/css/responsive.bootstrap.min.css">
+    <!-- Weather Icons-->
+    <link rel="stylesheet" type="text/css" href="../plugins/weather-icons/css/weather-icons-wind.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/weather-icons/css/weather-icons.min.css">
+    <!-- FullCalendar-->
+    <link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/dist/fullcalendar.print.css" media="print">
+    <!-- jQuery MiniColors-->
+    <link rel="stylesheet" type="text/css" href="../plugins/jquery-minicolors/jquery.minicolors.css">
+    <!-- Bootstrap Date Range Picker-->
+    <link rel="stylesheet" type="text/css" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- Primary Style-->
+    <link rel="stylesheet" type="text/css" href="../build/css/second-layout.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="../favicon.png"/>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!-- WARNING: Respond.js doesn't work if you view the pagxe via file://-->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+    <![endif]-->
+  </head>
+  <body data-sidebar-color="sidebar-light" class="sidebar-light" id="dashbod">
+    <!-- Header start-->
+    <header>
+      <div class="search-bar closed">
+        <form>
+          <div class="input-group input-group-lg">
+            <input  type="text" placeholder="Search for..." class="form-control"><span class="input-group-btn">
+              <button type="button" class="btn btn-default search-bar-toggle"><i class="ti-close"></i></button></span>
+          </div>
+        </form>
+      </div><a href="index.html" class="brand pull-left"><img src="../build/images/logo/logo-light.png" alt="" width="100" class="logo"></a><a href="javascript:;" role="button" class="hamburger-menu pull-left visible-xs"><span></span></a>
+      <form class="search-form pull-left hidden-xs" id="keyword-form">
+        <div class="form-group has-feedback mb-0">
+          <input type="text" id='search' aria-describedby="inputSearchFor" placeholder="Search for..." style="width: 600px" class="form-control rounded"><span aria-hidden="true" class="ti-search form-control-feedback"></span><span id="inputSearchFor" class="sr-only">(default)</span>
+        </div>
+      </form>
+      <ul class="notification-bar list-inline pull-right">
+        <li class="dropdown hidden-xs"><a id="dropdownMenu2" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle header-icon lh-1 pt-15 pb-15">
+            <div class="media mt-0">
+              <div class="media-left avatar"><img src="../build/images/users/user.png" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+              <div class="media-right media-middle pl-0">
+                <p class="fs-12 mb-0">Hi, User</p>
+              </div>
+            </div></a>
+          <ul aria-labelledby="dropdownMenu2" class="dropdown-menu fs-12 animated fadeInDown">
+            <li><a href="#"><i class="ti-settings mr-5"></i> Account Settings</a></li>
+            <li><a href="../index.html"><i class="ti-power-off mr-5"></i> Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Header end-->
+    <div class="main-container" id="dashlinkk">
+      <!-- Main Sidebar start-->
+      <aside data-mcs-theme="minimal-dark" class="main-sidebar mCustomScrollbar" style="overflow: hidden">
+        <div class="user">
+          <div id="esp-user-profile" data-percent="65" style="height: 104px; width: 104px; line-height: 80px; padding: 12px;" class="easy-pie-chart"><img src="../build/images/users/04.jpg" alt="" class="avatar img-circle"><span class="status bg-success"></span></div>
+        </div>
+        <ul class="list-unstyled navigation mb-0">
+          <li class="panel"><a href="#dashlinkk"><i class="ti-bar-chart-alt"></i><span class="sidebar-title">Analytics</span></a></li>
+          <li class="panel"><a href="#socialengage"><i class="ti-sharethis-alt"></i><span class="sidebar-title">Social Engagement</span></a></li>
+          <!--<li class="panel"><a href="#"><i class="ti-bar-chart-alt"></i><span class="sidebar-title">Analytics</span></a></li>-->
+
+          </li>
+          </ul>
+      </aside>
+      <!-- Main Sidebar end-->
+      <div class="page-container">
+        <div class="page-header clearfix">
+          <div class="row">
+            <div class="col-sm-6">
+              <h4 class="mt-0 mb-5">Dashboard</h4>
+              <p class="text-muted mb-0"></p>
+            </div>
+            <div class="col-sm-6">
+              <div class="clearfix">
+                <div class="pull-right">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-content container-fluid">
+          <div class="row">
+            <div class="col-lg-9" id="key_search">
+              <h3 id="search-term">
+                <div class="view"></div>
+                <br>
+                Enter a keyword to begin</h3>
+              <div class="text-center" id="loader"><i class="fa fa-4x fa-spin fa-spinner" ></i></div>
+              <div class="quantum view" id="quantum-logo"><h2>QUANTUM<span style="font-size:small;vertical-align: text-top">&copy;</span></h2></div>
+              <div id="container" style="width:100%; height:577px;">
+                <div class="grid-container">
+                  <div class="grid-column grid-column0">
+
+                  </div>
+                  <div class="grid-column grid-column1">
+
+                  </div>
+                  <div class="grid-column grid-column2">
+
+                  </div>
+                  <div class="grid-column grid-column3">
+
+                  </div>
+                  <div class="grid-column grid-column4">
+
+                  </div>
+                  <div class="grid-column grid-column5">
+
+                  </div>
+                  <div class="grid-column grid-column6">
+
+                  </div>
+                  <div class="grid-column grid-column7">
+
+                  </div>
+                  <div class="grid-column grid-column8">
+
+                  </div>
+                  <div class="grid-column grid-column9">
+
+                  </div>
+                </div>
+                <div class="grid-container-fixed">
+                  <div class="grid-column grid-column0">
+
+                  </div>
+                  <div class="grid-column grid-column1">
+
+                  </div>
+                  <div class="grid-column grid-column2">
+
+                  </div>
+                  <div class="grid-column grid-column3">
+
+                  </div>
+                  <div class="grid-column grid-column4">
+
+                  </div>
+                  <div class="grid-column grid-column5">
+
+                  </div>
+                  <div class="grid-column grid-column6">
+
+                  </div>
+                  <div class="grid-column grid-column7">
+
+                  </div>
+                  <div class="grid-column grid-column8">
+
+                  </div>
+                  <div class="grid-column grid-column9">
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-lg-3">
+              <div class="row">
+                <div class="col-lg-12 col-md-4">
+                  <div class="mb-30">
+                    <div class="media">
+                      <div class="media-body">
+                        <div class="styled-select green rounded">
+                          <select id="social-select">
+                            <option>Instagram</option>
+                            <option>Twitter</option>
+                            <option>YouTube</option>
+                          </select>
+                        </div><br>
+                        <h5 class="media-heading"><b>Instagram</b><span class="text-success"><i class="ti-arrow-up fs-13"></i>Best Performing</span></h5>
+                        <div id="instagram-right">
+                          <div class="fs-36 fw-600 counter very-positive">0</div><br><p>Very Positive</p>
+                          <div class="fs-36 fw-600 counter positive">0</div><br><p>Positive</p>
+                          <div class="fs-36 fw-600 counter neutral">0</div><br><p>Neutral</p>
+                          <div class="fs-36 fw-600 counter negative">0</div><br><p>Negative</p>
+                          <div class="fs-36 fw-600 counter very-negative">0</div><br><p>Very Negative</p>
+                        </div>
+                      </div>
+                      <div class="media-right"><img src="../build/images/icons/instagram%20copy.png"></div>
+                    </div>
+                    <div id="flot-order" style="height: 84px"></div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-4">
+                  <div class="mb-30">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="media-heading"><b>Tweets</b><span class="text-danger1"><i class="ti-arrow-up fs-13"></i>Best Performing</span></h5>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Positive</p>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Neutral</p>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Negative</p>
+                      </div>
+                      <div class="media-right"><img src="../build/images/icons/twitter.png"></div>
+                    </div>
+                    <div id="flot-revenue" style="height: 84px"></div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-4">
+                  <div class="mb-30">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="media-heading"><b>YouTube</b><span class="text-danger"><i class="ti-arrow-up fs-13"></i>Best Performing</span></h5>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Positive</p>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Neutral</p>
+                        <div class="fs-36 fw-600 counter">0</div><br><p>Negative</p>
+                      </div>
+                      <div class="media-right"><img src="../build/images/icons/youtube%20copy.png"></div>
+                    </div>
+                    <div id="socialengage"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><br><br>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="widget clear">
+                <div class="widget-heading clearfix">
+                  <h3 class="widget-title pull-left">Social Engagement</h3>
+                </div>
+                <div class="widget-body">
+                  <div class="row">
+
+                    <!--Twitter Template Start here-->
+                    <!--<div class="col-md-8">
+                      <div class="widget no-border">
+                        <div style="height: 197px" class="overlay-container overlay-color"><img src="../build/images/backgrounds/34.jpg" alt="" class="overlay-bg img-responsive"></div>
+                        <div style="position: relative"><a href="#" style="position: absolute; top: -70px; left: 50%; margin-left: -50px; border-radius: 50%; padding: 3px; background-color: #FFF"><img src="../build/images/users/11.jpg" width="100" alt="" class="img-circle"></a></div>
+                        <div class="text-center p-20 bd-l bd-r">
+                          <h4 class="text-primary mt-30 mb-5">@RaymondPierce</h4>
+                          <p>RayP</p>
+                          <p class="mb-0"><b>Tweet</b>: I just made a funny comment.</p>
+                        </div>
+                        <div class="row row-0 p-15 text-center bg-black">
+                          <img src="../build/images/backgrounds/twitter.png">
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">208</div>
+                            <div class="text-muted">Following</div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">560</div>
+                            <div class="text-muted">Likes</div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">95</div>
+                            <div class="text-muted">Photos</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>-->  <!--Twitter Template ends here -->
+
+                    <!--YouTube Template Starts here-->
+                    <!--<div class="col-md-8">
+                      <div class="widget no-border">
+                        <div style="height: 197px" class="overlay-container overlay-color"><img src="../build/images/backgrounds/34.jpg" alt="" class="overlay-bg img-responsive"></div>
+                        <div style="position: relative"><a href="#" style="position: absolute; top: -70px; left: 50%; margin-left: -50px; border-radius: 50%; padding: 3px; background-color: #FFF"><img src="../build/images/users/11.jpg" width="100" alt="" class="img-circle"></a></div>
+                        <div class="text-center p-20 bd-l bd-r">
+                          <h4 class="text-primary mt-30 mb-5">@RaymondPierce</h4>
+                          <p>RayP</p>
+                          <p class="mb-0">Comment: I just made a funny comment.</p>
+                        </div>
+                        <div class="row row-0 p-15 text-center bg-black_2">
+                          <img src="../build/images/backgrounds/youtube.png">
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">208</div>
+                            <div class="text-muted">Following</div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">560</div>
+                            <div class="text-muted">Likes</div>
+                          </div>
+                          <div class="col-xs-4">
+                            <div class="fs-20 fw-500">95</div>
+                            <div class="text-muted">Photos</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>--><!--YouTube Template ends here-->
+
+                    <!--Instagram Template starts here-->
+
+                    <div class="col-md-8" id="instagram-post-detail">
+                      <div class="widget no-border">
+                        <div style="height: 200px" class="overlay-container overlay-color"><img src="../build/images/backgrounds/34.jpg" alt="" class="overlay-bg img-responsive"></div>
+                        <div class="overlay-right">
+                          <h3 class="text-center name"><span style="color:#ffffff !important;">User ID</span></h3>
+                          <div class="comments">User comments are shown in this section</div>
+                        </div>
+                        <div style="position: relative"><a href="#" style="position: absolute; z-index: 10001; top: -70px; left: 50%; margin-left: -0px; border-radius: 50%; padding: 3px; background-color: #FFF">
+                          <img src="../build/images/users/04.jpg" width="100" alt="" class="img-circle user-img"></a></div>
+                        <div class="text-center p-20 bd-l bd-r">
+                          <h4 class="text-success mt-30 mb-5 username">User Name</h4>
+
+                          <p class="mb-0 text">This is a sample Post comment</p>
+                        </div>
+                        <div class="row row-0 p-15 text-center bg-black">
+                          <div class="col-xs-3">
+                            <div class="media-right"><img src="../build/images/icons/instagram%20copy.png"></div>
+                          </div>
+                          <div class="col-xs-3">
+                            <div class="fs-20 fw-500 engagement">0</div>
+                            <div class="text-muted">Sentiment Analysis</div>
+                          </div>
+                          <div class="col-xs-3">
+                            <div class="fs-20 fw-500 likes">0</div>
+                            <div class="text-muted">Likes</div>
+                          </div>
+                          <div class="col-xs-3">
+                            <div class="fs-20 fw-500 num_comments">0</div>
+                            <div class="text-muted">Comments</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  <!--Instagram Template ends here-->
+
+                    <div class="col-md-4">
+                      <div class="table-responsive">
+                        <table class="table mb-0">
+                          <thead>
+                            <tr>
+                              <th style="width:10%"></th>
+                              <th style="width:40%"><b>Social</b></th>
+                              <th style="width:25%"><b>Posts</b></th>
+                              <th style="width:25%"><b>Positive</b></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>Instagram</td>
+                              <td id="num-instagram">0</td>
+                              <td class="text-success instagram"></td>
+                            </tr>
+                            <tr>
+                              <td>2</td>
+                              <td>Twitter</td>
+                              <td>0</td>
+                              <td class="text-danger">0%</td>
+                            </tr>
+                            <tr>
+                              <td>3</td>
+                              <td>YouTube</td>
+                              <td>0</td>
+                              <td class="text-success">0%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <p>Check the boxes below to sort through the sentiments</p>
+              <form>
+                <div class="checkbox">
+                  <label><input type="checkbox" value="very-positive">Very Positive</label>
+                  <label><input type="checkbox" value="positive">Positive</label>
+                  <label><input type="checkbox" value="neutral">Neutral</label>
+                  <label><input type="checkbox" value="negative">Negative</label>
+                  <label><input type="checkbox" value="very-negative">Very Negative</label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8">
+              <div class="widget no-border">
+                <table id="order-table" style="width: 100%" class="table table-hover dt-responsive nowrap">
+                  <thead>
+                  <tr>
+                    <th style="width:16%">User ID</th>
+                    <th style="width:37%">Users</th>
+                    <th style="width:20%">Date Added</th>
+                    <th style="width:12%">Sentiment Analysis</th>
+                    <th style="width:15%">Best Performing Keywords</th>
+                  </tr>
+                  </thead>
+                  <tbody id="post-tbody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        <div class="footer col-md-12" >2018 &copy <p>Quantum</p><a href="http://www.weareblackbox.com" target="_blank">BLKBOX</a></div>
+      </div></div>
+      <!-- Right Sidebar start-->
+      <aside class="right-sidebar closed">
+        <ul role="tablist" class="nav nav-tabs nav-justified nav-sidebar">
+          <li role="presentation" class="active"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab"><i class="ti-comment-alt"></i></a></li>
+          <li role="presentation"><a href="#announcement" aria-controls="announcement" role="tab" data-toggle="tab"><i class="ti-announcement"></i></a></li>
+          <li role="presentation"><a href="#ticket" aria-controls="ticket" role="tab" data-toggle="tab"><i class="ti-bookmark-alt"></i></a></li>
+          <li role="presentation"><a href="#setting" aria-controls="setting" role="tab" data-toggle="tab"><i class="ti-settings"></i></a></li>
+        </ul>
+        <div data-mcs-theme="minimal-dark" class="tab-content nav-sidebar-content mCustomScrollbar">
+          <div id="chat" role="tabpanel" class="tab-pane fade in active">
+            <form>
+              <div class="form-group has-feedback">
+                <input type="text" aria-describedby="inputChatSearch" placeholder="Chat with..." class="form-control rounded"><span aria-hidden="true" class="ti-search form-control-feedback"></span><span id="inputChatSearch" class="sr-only">(default)</span>
+              </div>
+            </form>
+            <ul class="chat-list mb-0 fs-12 media-list">
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/20.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Jane Curtis</h6>
+                    <p class="text-muted mb-0">Where are you from?</p>
+                  </div>
+                  <div class="media-right"><span class="badge bg-danger">2</span></div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/01.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Edward Garcia</h6>
+                    <p class="text-muted mb-0">Nice to meet you.</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/02.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Bruce Olson</h6>
+                    <p class="text-muted mb-0">What do you want to do?</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/03.jpg" alt="" class="media-object img-circle"><span class="status bg-warning"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Martha Rodriguez</h6>
+                    <p class="text-muted mb-0">I'm hungry.</p>
+                  </div>
+                  <div class="media-right"><span class="badge bg-danger">1</span></div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/05.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Hannah Williamson</h6>
+                    <p class="text-muted mb-0">Do you know the address?</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/06.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Anthony Mills</h6>
+                    <p class="text-muted mb-0">No problem.</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/07.jpg" alt="" class="media-object img-circle"><span class="status bg-warning"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Ethan Stanley</h6>
+                    <p class="text-muted mb-0">Hello?</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/08.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Jonathan Castro</h6>
+                    <p class="text-muted mb-0">OK. Thanks.</p>
+                  </div>
+                  <div class="media-right"><span class="badge bg-danger">1</span></div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/09.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Denise Rose</h6>
+                    <p class="text-muted mb-0">Bye bye.</p>
+                  </div></a></li>
+              <li class="media"><a href="javascript:;" class="conversation-toggle">
+                  <div class="media-left avatar"><img src="../build/images/users/10.jpg" alt="" class="media-object img-circle"><span class="status bg-danger"></span></div>
+                  <div class="media-body">
+                    <h6 class="media-heading">Eugene Meyer</h6>
+                    <p class="text-muted mb-0">How are you?</p>
+                  </div></a></li>
+            </ul>
+          </div>
+          <div id="announcement" role="tabpanel" class="tab-pane fade">
+            <ul class="media-list mb-0 fs-12">
+              <li class="media">
+                <div class="media-left"><i class="ti-bar-chart-alt media-object mo-xs img-circle bg-primary text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">Market Trend Data</h6>
+                  <p class="text-muted mb-0">Mattis nam fringilla dui nostra, ad fames fusce venenatis massa.</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left"><i class="ti-package media-object mo-xs img-circle bg-success text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">Change Your Password!</h6>
+                  <p class="text-muted mb-0">Varius dolor condimentum hendrerit eleifend est urna neque fames faucibus?</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left"><i class="ti-gift media-object mo-xs img-circle bg-warning text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">We Apologize</h6>
+                  <p class="text-muted mb-0">Justo at mauris ridiculus conubia penatibus dis varius proin porttitor!</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left"><i class="ti-harddrives media-object mo-xs img-circle bg-info text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">Content Policy Update</h6>
+                  <p class="text-muted mb-0">Quis ante imperdiet a volutpat quam tellus condimentum blandit elementum.</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left"><i class="ti-mobile media-object mo-xs img-circle bg-purple text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">Mobile Apps</h6>
+                  <p class="text-muted mb-0">Ad iaculis at feugiat integer lobortis vivamus hac egestas venenatis.</p>
+                </div>
+              </li>
+              <li class="media">
+                <div class="media-left"><i class="ti-alarm-clock media-object mo-xs img-circle bg-danger text-center"></i></div>
+                <div class="media-body">
+                  <h6 class="media-heading">New Features</h6>
+                  <p class="text-muted mb-0">Primis elementum facilisi tristique faucibus feugiat enim rutrum id himenaeos.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="ticket" role="tabpanel" class="tab-pane fade">
+            <form>
+              <div class="form-group">
+                <input type="text" placeholder="Username" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Email" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Subject" class="form-control">
+              </div>
+              <div class="form-group">
+                <textarea rows="6" placeholder="Description" class="form-control"></textarea>
+              </div>
+              <button type="submit" class="btn btn-block btn-success">Create Ticket</button>
+            </form>
+          </div>
+          <div id="setting" role="tabpanel" class="tab-pane fade">
+            <form class="form-horizontal fs-12">
+              <div class="clearfix">
+                <h6 class="pull-left">Maintenance Mode</h6>
+                <div class="switch pull-right">
+                  <input id="setting-1" type="checkbox" checked="">
+                  <label for="setting-1" class="switch-success"></label>
+                </div>
+              </div>
+              <p class="text-muted">Ipsum non tempor non nullam nisi congue nisi amet enim.</p>
+              <div class="clearfix">
+                <h6 class="pull-left">Location Services</h6>
+                <div class="switch pull-right">
+                  <input id="setting-2" type="checkbox" checked="">
+                  <label for="setting-2" class="switch-success"></label>
+                </div>
+              </div>
+              <p class="text-muted">Eleifend suscipit erat cursus viverra commodo nostra sit commodo mollis.</p>
+              <div class="clearfix">
+                <h6 class="pull-left">Display Errors</h6>
+                <div class="switch pull-right">
+                  <input id="setting-3" type="checkbox" checked="">
+                  <label for="setting-3" class="switch-success"></label>
+                </div>
+              </div>
+              <p class="text-muted">Amet per tortor adipiscing risus dolor orci diam curabitur senectus.</p>
+              <div class="clearfix">
+                <h6 class="pull-left">Use SEO URLs</h6>
+                <div class="switch pull-right">
+                  <input id="setting-4" type="checkbox" checked="">
+                  <label for="setting-4" class="switch-success"></label>
+                </div>
+              </div>
+              <p class="text-muted">Ullamcorper dignissim facilisis fames proin a leo diam amet urna.</p>
+              <div class="clearfix">
+                <h6 class="pull-left">Enable History</h6>
+                <div class="switch pull-right">
+                  <input id="setting-5" type="checkbox" checked="">
+                  <label for="setting-5" class="switch-success"></label>
+                </div>
+              </div>
+              <p class="text-muted">Consectetur cubilia varius vulputate fermentum non dolor cubilia torquent risus.</p>
+            </form>
+          </div>
+        </div>
+      </aside>
+      <aside class="conversation closed">
+        <h5 class="text-center m-0 p-20">Edward Garcia<a href="javascript:;" class="conversation-toggle pull-left"><i class="ti-arrow-left text-muted"></i></a><a href="javascript:;" class="pull-right"><i class="ti-pencil text-muted"></i></a></h5>
+        <ul data-mcs-theme="minimal-dark" class="media-list chat-content fs-12 pl-20 pr-20 mCustomScrollbar">
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>Hello.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">09:45 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+          <li class="media other">
+            <div class="media-body">
+              <p>Hi.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted pull-right">09:46 PM <i class="ti-check text-success"></i></time>
+            </div>
+            <div class="media-right avatar"><img src="../build/images/users/18.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+          </li>
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>How are you?</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">09:47 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+          <li class="media other">
+            <div class="media-body">
+              <p>I'm good. How are you?</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted pull-right">09:50 PM <i class="ti-check text-success"></i></time>
+            </div>
+            <div class="media-right avatar"><img src="../build/images/users/18.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+          </li>
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>Good. Do you speak English?</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">09:55 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+          <li class="media other">
+            <div class="media-body">
+              <p>A little. Are you American?</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted pull-right">09:56 PM <i class="ti-check text-success"></i></time>
+            </div>
+            <div class="media-right avatar"><img src="../build/images/users/18.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+          </li>
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>Yes.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">10:00 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+          <li class="media other">
+            <div class="media-body">
+              <p>Where are you from?</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted pull-right">10:01 PM <i class="ti-check text-success"></i></time>
+            </div>
+            <div class="media-right avatar"><img src="../build/images/users/18.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+          </li>
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>I'm from California.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">10:03 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+          <li class="media other">
+            <div class="media-body">
+              <p>Nice to meet you.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted pull-right">10:04 PM <i class="ti-check text-success"></i></time>
+            </div>
+            <div class="media-right avatar"><img src="../build/images/users/18.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+          </li>
+          <li class="media">
+            <div class="media-left avatar"><img src="../build/images/users/04.jpg" alt="" class="media-object img-circle"><span class="status bg-success"></span></div>
+            <div class="media-body">
+              <p>Nice to meet you too.</p>
+              <time datetime="2015-12-10T20:50:48+07:00" class="fs-11 text-muted">10:05 PM <i class="ti-check text-success"></i></time>
+            </div>
+          </li>
+        </ul>
+        <form class="pl-20 pr-20">
+          <div class="form-group has-feedback mb-0">
+            <input type="text" aria-describedby="inputSendMessage" placeholder="Sent a message" class="form-control rounded"><span aria-hidden="true" class="ti-pencil-alt form-control-feedback"></span><span id="inputSendMessage" class="sr-only">(default)</span>
+          </div>
+        </form>
+      </aside>
+      <!-- Right Sidebar end-->
+    </div>
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="widget no-border">
+            <div style="height: 200px" class="overlay-container overlay-color"><img src="../build/images/backgrounds/34.jpg" alt="" class="overlay-bg img-responsive"></div>
+            <div class="overlay-right">
+              <h3 class="text-center name"></h3>
+              <div class="comments"></div>
+            </div>
+            <div style="position: relative"><a href="#" style="position: absolute; z-index: 10001; top: -70px; left: 50%; margin-left: -50px; border-radius: 50%; padding: 3px; background-color: #FFF">
+              <img src="../build/images/users/03.jpg" width="100" alt="" class="img-circle user-img"></a></div>
+            <div class="text-center p-20 bd-l bd-r">
+              <h4 class="text-success mt-30 mb-5 username">User Name</h4>
+
+              <p class="mb-0 text">This is a sample Post Comment.</p>
+            </div>
+            <div class="row row-0 p-15 text-center bg-black">
+              <div class="col-xs-3">
+                <div class="media-right"><img src="../build/images/icons/instagram%20copy.png"></div>
+              </div>
+              <div class="col-xs-3">
+                <div class="fs-20 fw-500 engagement">208</div>
+                <div class="text-muted">Sentiment Analysis</div>
+              </div>
+              <div class="col-xs-3">
+                <div class="fs-20 fw-500 likes">560</div>
+                <div class="text-muted">Likes</div>
+              </div>
+              <div class="col-xs-3">
+                <div class="fs-20 fw-500 num_comments">95</div>
+                <div class="text-muted">Comments</div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Demo Settings start-->
+    <!-- Demo Settings end-->
+    <!-- jQuery-->
+    <script type="text/javascript" src="../plugins/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript-->
+    <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Malihu Scrollbar-->
+    <script type="text/javascript" src="../plugins/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- Animo.js-->
+    <script type="text/javascript" src="../plugins/animo.js/animo.min.js"></script>
+    <!-- Bootstrap Progressbar-->
+    <script type="text/javascript" src="../plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- jQuery Easy Pie Chart-->
+    <script type="text/javascript" src="../plugins/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+    <!-- Toastr-->
+    <script type="text/javascript" src="../plugins/toastr/toastr.min.js"></script>
+    <!-- MomentJS-->
+    <script type="text/javascript" src="../plugins/moment/min/moment.min.js"></script>
+    <!-- jQuery BlockUI-->
+    <script type="text/javascript" src="../plugins/blockUI/jquery.blockUI.js"></script>
+    <!-- jQuery Counter Up-->
+    <script type="text/javascript" src="../plugins/jquery-waypoints/waypoints.min.js"></script>
+    <script type="text/javascript" src="../plugins/Counter-Up/jquery.counterup.min.js"></script>
+    <!-- Jvector Map-->
+    <script type="text/javascript" src="../plugins/jvectormap/jquery-jvectormap-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../plugins/jvectormap/maps/jquery-jvectormap-world-mill.js"></script>
+    <!-- Flot Charts-->
+    <script type="text/javascript" src="../plugins/flot/jquery.flot.js"></script>
+    <script type="text/javascript" src="../plugins/flot/jquery.flot.resize.js"></script>
+    <script type="text/javascript" src="../plugins/flot.curvedlines/curvedLines.js"></script>
+    <script type="text/javascript" src="../plugins/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <!-- Morris Chart-->
+    <script type="text/javascript" src="../plugins/raphael/raphael-min.js"></script>
+    <script type="text/javascript" src="../plugins/morris.js/morris.min.js"></script>
+    <!-- DataTables-->
+    <script type="text/javascript" src="../plugins/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../plugins/jszip/dist/jszip.min.js"></script>
+    <script type="text/javascript" src="../plugins/pdfmake/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="../plugins/pdfmake/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-colreorder/js/dataTables.colReorder.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="../plugins/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <!-- jQuery UI-->
+    <script type="text/javascript" src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- FullCalendar-->
+    <script type="text/javascript" src="../plugins/fullcalendar/dist/fullcalendar.min.js"></script>
+    <!-- jQuery MiniColors-->
+    <script type="text/javascript" src="../plugins/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <!-- Bootstrap Date Range Picker-->
+    <script type="text/javascript" src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Custom JS-->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    <script type="text/javascript" src="../build/js/second-layout/demo.js"></script>
+    <script type="text/javascript" src="../build/js/second-layout/jquery.simplePagination.js"></script>
+    <script type="text/javascript" src="../build/js/second-layout/app.js"></script>
+    <script type="text/javascript" src="../build/js/page-content/dashboard/index.js"></script>
+  </body>
+</html>
